@@ -4,16 +4,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                docker build -t simplepythonflask .
+                sh 'docker build -t simplepythonflask .'
             }
         }
         
         stage('Executa Teste') {
             steps {
-                docker run --rm -tdi -p5000:5000 --name test simplepythonflask
-                sleep 10
-                docker exec -ti test nosetests --with-xunit --with-coverage --cover-package=project test_users.py
-                docker cp test:/courseCatalog/nosetests.xml .
+                sh 'docker run --rm -tdi -p5000:5000 --name test simplepythonflask'
+                sh 'sleep 10'
+                sh 'docker exec -ti test nosetests --with-xunit --with-coverage --cover-package=project test_users.py'
+                sh 'docker cp test:/courseCatalog/nosetests.xml .'
             }
             
         }
@@ -25,7 +25,7 @@ pipeline {
         }
         success {
             echo 'Finalizei com sucesso'
-            dpcker stop test
+            sh 'docker stop test'
         }
         unstable {
             echo 'I am unstable :/'
