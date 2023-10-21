@@ -14,7 +14,7 @@ pipeline {
                 sh 'sleep 10'
                 sh 'docker exec -i test nosetests --with-xunit --with-coverage --cover-package=project test_users.py'
                 sh 'docker cp test:/courseCatalog/nosetests.xml .'
-                junit nosetests.xml
+                junit 'nosetests.xml'
             }
             
         }
