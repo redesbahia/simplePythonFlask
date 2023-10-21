@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'docker run --rm -tdi -p5000:5000 --name test simplepythonflask'
                 sh 'sleep 10'
-                sh 'docker exec -ti test nosetests --with-xunit --with-coverage --cover-package=project test_users.py'
+                sh 'docker exec -i test nosetests --with-xunit --with-coverage --cover-package=project test_users.py'
                 sh 'docker cp test:/courseCatalog/nosetests.xml .'
             }
             
