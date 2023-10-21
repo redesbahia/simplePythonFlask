@@ -32,7 +32,7 @@ pipeline {
         }
         failure {
             echo 'Ocorreu uma falha'
-            docker stop test
+            sh 'docker stop test'
         }
         changed {
             echo 'Things were different before...'
