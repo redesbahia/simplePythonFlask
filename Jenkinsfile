@@ -28,7 +28,7 @@ pipeline {
                    -Dsonar.projectKey=courseCatalog \
                    -Dsonar.sources=. \
                    -Dsonar.host.url=http://sonarqube:9000 \
-                   -Dsonar.login=sqp_fbede7496fb283351ec20b80d09f195e435e0854" 
+                   -Dsonar.login=sqp_40dfb6a8203efd2ab2fdb91f213a5aa06b207fb1" 
                 }
                 }      
         }
